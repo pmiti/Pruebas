@@ -1,0 +1,69 @@
+<!--
+<h1>Titulo</h1>
+<h2>{{'El nombre es: ' + GetNombre() }}</h2>
+<h1>Imagen:</h1>
+<img [src]="imagenURL">
+<hr/>
+<etiqueta_comp1></etiqueta_comp1>
+<hr/>
+<app-comp2></app-comp2> 
+-->
+
+<!--Property Binding-->
+<button [disabled] = "botonStatus">Property Binding</button>
+<hr/>
+<!--Class Binding-->
+<button [class.activo] = "isActive">Class Binding</button>
+<hr/>
+<!--Style Binding-->
+<!--<button [style.backgroundColor] = "isActiveStyleBinding ? 'green' : 'red'">Prueba Style Binding</button>-->
+<button [style.borderColor] = "isActiveStyleBinding ? 'green' : 'red'">Prueba Style Binding</button>
+<hr/>
+<!--Event Binding-->
+<!--<button (click)="save($event)">Prueba Event Binding</button>-->
+<button (mouseover)="save($event)">Prueba Event Binding</button>
+<hr/>
+<!--Event Filtering-->
+Prueba Evento <input type = "text" (keyup) = "onKeyUp($event)"/>
+<hr/>
+Prueba Event Filtering <input type = "text1" (keyup.enter) = "onKeyUp1()"/>
+<hr/>
+<!-- Template variable -->
+Prueba Sin Template variable <input type = "text2" (keyup.enter) = "onKeyUp2($event)"/>
+<hr/>
+Prueba Con Template variable <input type = "text3" (keyup.enter) = "onKeyUp3(nombre.value)" #nombre/>
+<hr/>
+<!-- Two way binding  -->
+<p>Prueba Two way binding: </p>
+<input type = "text4" [(ngModel)] = "persona.nombre">
+<p>{{persona.nombre}}</p>
+<hr/>
+<!-- Servicios  -->
+<ul>
+    <li *ngFor="let per of personas"> {{ per.nombre }} </li>
+</ul>
+
+<!-- Reactive forms: Permite hacer validaciones al formulario. Hace validaciones del lado del componente -->
+
+<!-- Etiquetas @input @output comunicacion entre componente padre y hijo -->
+<!-- Proyección de contenido (ng-content) permite enviar elementos a un componente determinado -->
+
+<!-- Slot Content Projection: Permite ordenar los elementos que se envian con proyección de contenido  -->
+
+<!-- Petición de un archivo JSON a un servidor -->
+<!-- <app-comp2></app-comp2> -->
+
+
+<div *ngIf="articulos!=null; else espera">
+    <table border="1">
+      <tr>
+        <td>Codigo</td><td>Descripcion</td><td>Precio</td>
+      </tr>
+      <tr *ngFor="let art of articulos">
+        <td>{{art.codigo}}</td>
+        <td>{{art.descripcion}}</td>
+        <td>{{art.precio}}</td>
+      </tr>
+    </table>
+  </div>
+  <ng-template #espera>Esperando datos...</ng-template>
